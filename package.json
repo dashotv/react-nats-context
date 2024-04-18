@@ -1,15 +1,15 @@
 {
-  "name": "@quara-dev/react-nats-context",
-  "version": "1.3.0",
+  "name": "@dashotv/react-nats-context",
+  "version": "1.4.0",
   "description": "NATS Typescript client library for React applications",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "author": "Guillaume Charbonnier",
-  "homepage": "https://github.com/charbonnierg/react-nats-context#readme",
+  "homepage": "https://github.com/dashotv/react-nats-context#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/charbonnierg/react-nats-context.git"
+    "url": "https://github.com/dashotv/react-nats-context.git"
   },
   "license": "MIT",
   "scripts": {
@@ -21,21 +21,16 @@
     "format": "prettier -w examples/demo--react-nats/pages examples/demo--react-nats/components src"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^7.0.1",
-    "@types/jest": "^27.0.1",
-    "@types/react": "^17.0.19",
-    "browser-env": "^3.3.0",
-    "jest": "^27.0.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.3.5"
+    "@types/react": "^18.2.79",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "nats.ws": "^1.2.0"
+    "nats.ws": "^1.23.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.20.0",
+    "react-dom": "^18.20.0"
   }
 }

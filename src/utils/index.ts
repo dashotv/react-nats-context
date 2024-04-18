@@ -11,7 +11,7 @@ export const waitFor = (
 ): Promise<void> => {
   const poll = (resolve: any) => {
     if (condition()) resolve();
-    else setTimeout((_) => poll(resolve), repeat);
+    else setTimeout((_handler: TimerHandler) => poll(resolve), repeat);
   };
   return new Promise(poll);
 };
