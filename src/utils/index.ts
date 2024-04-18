@@ -7,7 +7,7 @@
  */
 export const waitFor = (
   condition: () => boolean,
-  repeat: number = 200
+  repeat: number = 200,
 ): Promise<void> => {
   const poll = (resolve: any) => {
     if (condition()) resolve();

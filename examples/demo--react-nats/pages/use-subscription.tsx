@@ -20,7 +20,7 @@ const UseSubscription: NextPage = () => {
 
   const { connected, connecting, reconnecting, closed } = useSubscription(
     "demo",
-    { callback }
+    { callback },
   );
 
   if (connected) {

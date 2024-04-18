@@ -32,9 +32,9 @@ const Home: NextPage = () => {
         const msgHeaders = {
           ...msg.headers,
           headers: getHeaders(msg),
-        }
+        };
         alert(
-          `Received new message on subject ${subject} (${JSON.stringify(msgHeaders)}): ${data}`
+          `Received new message on subject ${subject} (${JSON.stringify(msgHeaders)}): ${data}`,
         );
       }
     };

@@ -7,7 +7,7 @@ export class NatsContextError extends Error {
 
   constructor(
     msg: string,
-    options?: { name?: string; code?: string; description?: string }
+    options?: { name?: string; code?: string; description?: string },
   ) {
     super(msg);
     // Set the prototype explicitly.

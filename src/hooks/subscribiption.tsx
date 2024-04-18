@@ -9,7 +9,7 @@ import { useNats } from "./nats";
  */
 export const useSubscription = (
   subject: string,
-  opts?: SubscriptionOptions
+  opts?: SubscriptionOptions,
 ) => {
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [subscriptionOptions, setSubscriptionOptions] = useState<

@@ -19,7 +19,7 @@ type RequestUpdateOptions = Omit<RequestOptions, "timeout"> & {
 export const useRequest = (
   subject: string,
   payload?: Uint8Array,
-  opts?: RequestHookOptions
+  opts?: RequestHookOptions,
 ) => {
   let auto: boolean | undefined = false;
   let requestOptions: RequestOptions | undefined;

@@ -104,32 +104,32 @@ export interface NatsContextAttrs {
   publish: (
     subject: string,
     payload?: Uint8Array,
-    opts?: PublishOptions
+    opts?: PublishOptions,
   ) => void;
   publishText: (
     subject: string,
     payload?: string,
-    opts?: PublishOptions
+    opts?: PublishOptions,
   ) => void;
   publishJson: (
     subject: string,
     payload?: unknown,
-    opts?: PublishOptions
+    opts?: PublishOptions,
   ) => void;
   request: (
     subject: string,
     payload?: Uint8Array,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ) => Promise<Msg>;
   requestText: (
     subject: string,
     payload?: string,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ) => Promise<TextMsg>;
   requestJson: (
     subject: string,
     payload?: unknown,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ) => Promise<JsonMsg>;
 }
 
@@ -160,42 +160,42 @@ const defaultContext: NatsContextAttrs = {
   publish: (
     _subject: string,
     _payload?: Uint8Array,
-    _opts?: PublishOptions
+    _opts?: PublishOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
   publishText: (
     _subject: string,
     _payload?: string,
-    _opts?: PublishOptions
+    _opts?: PublishOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
   publishJson: (
     _subject: string,
     _payload?: unknown,
-    _opts?: PublishOptions
+    _opts?: PublishOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
   request: async (
     _subject: string,
     _payload?: Uint8Array,
-    _opts?: RequestOptions
+    _opts?: RequestOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
   requestText: async (
     _subject: string,
     _payload?: string,
-    _opts?: RequestOptions
+    _opts?: RequestOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
   requestJson: async (
     _subject: string,
     _payload?: unknown,
-    _opts?: RequestOptions
+    _opts?: RequestOptions,
   ) => {
     throw new NatsContextError("NATS context has not been initialized yet");
   },
@@ -245,7 +245,7 @@ export const NatsProvider = (props: NatsContextProps) => {
 
   const _notify = (
     props: NatsNotificationProps,
-    notifier?: (props: NatsNotificationProps) => void
+    notifier?: (props: NatsNotificationProps) => void,
   ) => {
     // Fetch the notifier function
     const _notifier = notifier ? notifier : onStatus;
@@ -266,7 +266,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "info",
           id: "connecting",
         },
-        onConnect
+        onConnect,
       );
     },
     reconnecting() {
@@ -277,7 +277,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "warning",
           id: "reconnecting",
         },
-        onReconnecting
+        onReconnecting,
       );
     },
     reconnect() {
@@ -288,7 +288,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "info",
           id: "reconnect",
         },
-        onReconnect
+        onReconnect,
       );
     },
     connect() {
@@ -299,7 +299,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "info",
           id: "connect-success",
         },
-        onConnect
+        onConnect,
       );
     },
     failed() {
@@ -310,7 +310,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "error",
           id: "connect-failure",
         },
-        onConnectFailure
+        onConnectFailure,
       );
     },
     disconnect() {
@@ -321,7 +321,7 @@ export const NatsProvider = (props: NatsContextProps) => {
           status: "error",
           id: "connect-failure",
         },
-        onDisconnect
+        onDisconnect,
       );
     },
   };
@@ -345,7 +345,7 @@ export const NatsProvider = (props: NatsContextProps) => {
   const publishText = (
     subject: string,
     payload?: string,
-    opts?: PublishOptions
+    opts?: PublishOptions,
   ): void => {
     nc.publish(subject, dumpText(payload), opts);
   };
@@ -359,7 +359,7 @@ export const NatsProvider = (props: NatsContextProps) => {
   const publishJson = (
     subject: string,
     payload?: unknown,
-    opts?: PublishOptions
+    opts?: PublishOptions,
   ): void => {
     nc.publish(subject, dumpJSON(payload), opts);
   };
@@ -374,7 +374,7 @@ export const NatsProvider = (props: NatsContextProps) => {
   const request = async (
     subject: string,
     payload?: Uint8Array,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ): Promise<Msg> => {
     return await nc.request(subject, payload || Empty, opts);
   };
@@ -389,7 +389,7 @@ export const NatsProvider = (props: NatsContextProps) => {
   const requestText = async (
     subject: string,
     payload?: string,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ): Promise<TextMsg> => {
     const reply_msg = await nc.request(subject, dumpText(payload), opts);
     return {
@@ -411,7 +411,7 @@ export const NatsProvider = (props: NatsContextProps) => {
   const requestJson = async (
     subject: string,
     payload?: unknown,
-    opts?: RequestOptions
+    opts?: RequestOptions,
   ): Promise<JsonMsg> => {
     const reply_msg = await nc.request(subject, dumpJSON(payload), opts);
     return {
@@ -431,7 +431,7 @@ export const NatsProvider = (props: NatsContextProps) => {
    */
   const subscribe = (
     subject: string,
-    opts?: SubscriptionOptions
+    opts?: SubscriptionOptions,
   ): Subscription => {
     const sub = nc.subscribe(subject, opts);
     const unsub = sub.unsubscribe ? sub.unsubscribe : (..._: any) => {};

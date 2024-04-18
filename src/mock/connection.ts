@@ -34,7 +34,7 @@ export class NatsConnectionMock implements NatsConnection {
   publish = (
     _subject: string,
     _data?: Uint8Array,
-    _options?: PublishOptions
+    _options?: PublishOptions,
   ): void => {
     throw new NatsContextError("Failed to publish", {
       name: "ClientNotInitiliazedError",
@@ -52,7 +52,7 @@ export class NatsConnectionMock implements NatsConnection {
   request = async (
     _subject: string,
     _data?: Uint8Array,
-    _opts?: RequestOptions
+    _opts?: RequestOptions,
   ): Promise<Msg> => {
     throw new NatsContextError("Failed to request", {
       name: "ClientNotInitiliazedError",
@@ -63,7 +63,7 @@ export class NatsConnectionMock implements NatsConnection {
   requestMany = async (
     _subject: string,
     _payload?: Payload,
-    _opts?: Partial<RequestManyOptions>
+    _opts?: Partial<RequestManyOptions>,
   ): Promise<AsyncIterable<Msg>> => {
     throw new NatsContextError("Failed to requestMany", {
       name: "ClientNotInitiliazedError",
@@ -112,7 +112,7 @@ export class NatsConnectionMock implements NatsConnection {
   };
 
   jetstreamManager = async (
-    _opts?: JetStreamOptions
+    _opts?: JetStreamOptions,
   ): Promise<JetStreamManager> => {
     throw new NatsContextError("Failed to get JetStream Manager", {
       name: "ClientNotInitiliazedError",

@@ -18,10 +18,12 @@
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "test": "jest \".*\\.spec\\.[ts|tsx]\" --runInBand --env ./scripts/jest.env.js",
     "nats": "nats-server -c nats.local.conf",
-    "format": "prettier -w examples/demo--react-nats/pages examples/demo--react-nats/components src"
+    "format": "prettier -w examples/demo--react-nats/pages examples/demo--react-nats/components src",
+    "patch": "npm run build && npm version patch && npm publish"
   },
   "devDependencies": {
     "@types/react": "^18.2.79",
+    "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
